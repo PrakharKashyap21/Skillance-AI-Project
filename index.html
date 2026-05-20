@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skillhance | AI Career Recommender</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div class="brand">
+            <div class="brand-mark" aria-hidden="true">S</div>
+            <div>
+              <h1>Skillhance</h1>
+              <p>AI Career Recommender + Chatbot</p>
+            </div>
+          </div>
+          <div class="status-pill">
+            <span></span>
+            Dataset ready
+          </div>
+        </header>
+
+        <section class="intro-panel" aria-label="Skillhance overview">
+          <h2>Career guidance workspace</h2>
+        </section>
+
+        <div class="main-grid">
+          <section class="panel form-panel" aria-labelledby="profile-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Step 1</p>
+                <h2 id="profile-heading">Build your learner profile</h2>
+              </div>
+              <button class="icon-button" id="resetBtn" type="button" aria-label="Reset profile" title="Reset profile">
+                ↺
+              </button>
+            </div>
+
+            <form id="profileForm">
+              <label class="field">
+                <span>Your name</span>
+                <input id="nameInput" type="text" placeholder="Example: Aisha" autocomplete="name" />
+              </label>
+
+              <div class="field">
+                <span>Current education</span>
+                <select id="educationInput">
+                  <option value="school">School student</option>
+                  <option value="college">College student</option>
+                  <option value="graduate">Graduate</option>
+                  <option value="working">Working professional</option>
+                </select>
+              </div>
+
+              <fieldset class="choice-group">
+                <legend>Interests</legend>
+                <div class="chips" id="interestChoices"></div>
+              </fieldset>
+
+              <fieldset class="choice-group">
+                <legend>Strengths</legend>
+                <div class="chips" id="strengthChoices"></div>
+              </fieldset>
+
+              <div class="field">
+                <span>Preferred work style</span>
+                <select id="workStyleInput">
+                  <option value="creative">Creative and visual</option>
+                  <option value="analytical">Analytical and research-oriented</option>
+                  <option value="people">People-focused and collaborative</option>
+                  <option value="building">Building products or systems</option>
+                  <option value="business">Business and strategy</option>
+                </select>
+              </div>
+
+              <label class="field">
+                <span>Skills you already have</span>
+                <textarea id="skillsInput" rows="4" placeholder="Example: Python, communication, drawing, Excel, problem solving"></textarea>
+              </label>
+
+              <button class="primary-button" type="submit">Generate recommendations</button>
+            </form>
+          </section>
+
+          <section class="panel results-panel" aria-labelledby="results-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Step 2</p>
+                <h2 id="results-heading">Top career matches</h2>
+              </div>
+              <span class="match-count" id="matchCount">Waiting</span>
+            </div>
+            <div class="empty-state" id="emptyState">
+              <div class="career-map" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <h3>Your recommendations will appear here.</h3>
+              <p>Choose your interests and strengths, then Skillhance will rank careers from the dataset.</p>
+            </div>
+            <div class="recommendations" id="recommendations"></div>
+          </section>
+        </div>
+
+        <section class="panel dataset-panel" aria-labelledby="dataset-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Dataset</p>
+              <h2 id="dataset-heading">Explore career paths</h2>
+            </div>
+            <input id="careerSearch" class="search-input" type="search" placeholder="Search careers or skills" />
+          </div>
+          <div class="career-directory" id="careerDirectory"></div>
+        </section>
+      </section>
+
+      <aside class="chat-panel" aria-label="Career chatbot">
+        <div class="chat-header">
+          <div>
+            <p class="eyebrow">Step 3</p>
+            <h2>Skillhance Guide</h2>
+          </div>
+          <span class="bot-avatar" aria-hidden="true">AI</span>
+        </div>
+
+        <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+
+        <div class="quick-prompts" id="quickPrompts">
+          <button type="button" data-prompt="Which career should I choose?">Best fit</button>
+          <button type="button" data-prompt="Give me a roadmap">Roadmap</button>
+          <button type="button" data-prompt="What skills should I learn first?">Skills</button>
+          <button type="button" data-prompt="Suggest useful courses">Courses</button>
+        </div>
+
+        <form class="chat-input-row" id="chatForm">
+          <input id="chatInput" type="text" placeholder="Ask about career, skills, salary, roadmap..." autocomplete="off" />
+          <button type="submit" aria-label="Send message">➜</button>
+        </form>
+      </aside>
+    </main>
+
+    <script src="data/careers.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
